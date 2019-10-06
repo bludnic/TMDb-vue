@@ -1,0 +1,26 @@
+{
+  "name": "@tmdb/api",
+  "version": "0.1.0",
+  "description": "The Movie Database REST API",
+  "main": "dist/index.js",
+  "author": "bludnic",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nodemon",
+    "build": "tsc"
+  },
+  "devDependencies": {
+    "@types/koa": "^2.0.50",
+    "@types/koa-router": "^7.0.42",
+    "@types/koa-static": "^4.0.1",
+    "@types/node": "^12.7.11",
+    "nodemon": "^1.19.3",
+    "ts-node": "^8.4.1",
+    "typescript": "^3.6.3"
+  },
+  "dependencies": {
+    "koa": "^2.8.2",
+    "koa-router": "^7.4.0",
+    "koa-static": "^5.0.0"
+  }
+}
