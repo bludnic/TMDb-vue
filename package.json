@@ -1,0 +1,15 @@
+{
+  "name": "TMDb-vue",
+  "version": "1.0.0",
+  "description": "The Movie Database App",
+  "repository": "https://github.com/bludnic/TMDb-vue.git",
+  "author": "bludnic",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "dev": "lerna run dev"
+  },
+  "devDependencies": {
+    "lerna": "^3.16.4"
+  }
+}
