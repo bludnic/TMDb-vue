@@ -5,7 +5,7 @@ import serve from 'koa-static'
 
 import router from './routes'
 
-const PORT = process.env.PORT || 4000
+const PORT = Number(process.env.PORT) || 4000
 const HOST = process.env.HOST || '127.0.0.1'
 const app = new Koa()
 
