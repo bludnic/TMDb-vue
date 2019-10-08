@@ -3,6 +3,7 @@ import * as path from 'path'
 import Koa from 'koa'
 import serve from 'koa-static'
 import bodyParser from 'koa-body'
+import cors from 'koa2-cors'
 
 import router from './routes'
 import staticMiddleware from './middlewares/static'
@@ -15,6 +16,7 @@ const app = new Koa()
 // Catch errors
 app.use(errorMiddleware)
 
+app.use(cors({ origin: '*' }))
 app.use(bodyParser({ multipart: true }))
 app.use(router.routes())
 app.use(serve(path.resolve(__dirname, '../../web/dist')))
