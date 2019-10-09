@@ -12,20 +12,10 @@
       </v-flex>
 
       <v-flex xs12 class="text-xs-center">
-        <v-btn
-          :disabled="isLoading"
-          :flat="isLoading"
+        <show-more-button
           @click="fetchMovies"
-        >
-          <v-progress-circular
-            v-show="isLoading"
-            indeterminate
-            color="primary"
-            size="24"
-            class="mr-3"
-          />
-          <div v-if="!isLoading">Show More</div>
-        </v-btn>
+          v-model="isLoading"
+        />
       </v-flex>
     </v-layout>
   </v-container>
@@ -36,6 +26,7 @@ import Vue from 'vue'
 
 import apiClient from '@/services/apiClient'
 import MovieCard from '@/components/MovieCard'
+import ShowMoreButton from '@/components/ShowMoreButton'
 
 export default Vue.extend({
   name: 'genre',
@@ -76,7 +67,8 @@ export default Vue.extend({
     }
   },
   components: {
-    MovieCard
+    MovieCard,
+    ShowMoreButton
   },
   props: {
     id: {
