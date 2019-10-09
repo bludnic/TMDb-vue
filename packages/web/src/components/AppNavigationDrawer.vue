@@ -8,6 +8,7 @@
     <v-divider></v-divider>
 
     <v-list>
+      <v-subheader>Genres</v-subheader>
 
       <v-list-tile
         v-for="item in items"
