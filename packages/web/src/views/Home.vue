@@ -1,9 +1,12 @@
 <template>
   <v-container grid-list-md>
     <v-layout row wrap>
-      <v-flex md2 v-for="movie in movies">
+      <v-flex
+        v-for="movie in movies"
+        :key="movie.id"
+        md2
+      >
         <movie-card
-          :key="movie.id"
           :id="movie.id"
           :title="movie.title"
           :release-date="movie.release_date"
@@ -25,13 +28,13 @@
 import Vue from 'vue'
 
 import apiClient from '@/services/apiClient'
-import MovieCard from '@/components/MovieCard'
-import ShowMoreButton from '@/components/ShowMoreButton'
+import MovieCard from '@/components/MovieCard.vue'
+import ShowMoreButton from '@/components/ShowMoreButton.vue'
 
 export default Vue.extend({
   name: 'home',
-  async created () {
-    return this.fetchMovies()
+  mounted () {
+    this.fetchMovies()
   },
   data: () => ({
     movies: [],
@@ -50,7 +53,9 @@ export default Vue.extend({
       const movies = await apiClient.get('movie/popular', { params })
         .then(res => res.data.results)
         .catch(err => console.error(err))
-        .finally(() => this.isLoading = false)
+        .finally(() => {
+          this.isLoading = false
+        })
 
       this.movies = this.movies.concat(movies)
     }

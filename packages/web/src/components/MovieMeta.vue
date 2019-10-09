@@ -42,24 +42,25 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
+import Vue, { PropOptions } from 'vue'
 
 import currency from '@/filters/currency'
 import time from '@/filters/time'
+import { TMDbProductionCountry } from '../../../api/src/models'
 
 export default Vue.extend({
   name: 'movie-meta',
   computed: {
-    year () {
+    year (): number {
       return (new Date(this.releaseDate))
         .getFullYear()
     },
     countries (): string {
       return this.productionCountries
-        .map(contry => contry.name)
+        .map((country: TMDbProductionCountry) => country.name)
         .join(', ')
     },
-    age () {
+    age (): string {
       return this.adult ? '18+' : '6+'
     }
   },
@@ -83,13 +84,17 @@ export default Vue.extend({
     productionCountries: {
       type: Array,
       required: true
-    },
+    } as PropOptions<TMDbProductionCountry[]>,
     tagline: {
       type: String,
       required: true
     },
     budget: {
       type: Number,
+      required: true
+    },
+    adult: {
+      type: Boolean,
       required: true
     },
     revenue: {

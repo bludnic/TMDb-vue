@@ -28,13 +28,13 @@
 <script lang="ts">
 import Vue from 'vue'
 
-import AppLogo from './AppLogo'
+import AppLogo from './AppLogo.vue'
 
 export default Vue.extend({
   data: () => ({
   }),
   methods: {
-    goToCategory (id: number) {
+    goToCategory (id: string) {
       this.$router.replace({
         name: 'genre',
         params: {

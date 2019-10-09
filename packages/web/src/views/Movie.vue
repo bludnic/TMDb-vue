@@ -49,8 +49,8 @@
 import Vue from 'vue'
 
 import apiClient from '@/services/apiClient'
-import MovieMeta from '@/components/MovieMeta'
-import MovieTrailer from '@/components/MovieTrailer'
+import MovieMeta from '@/components/MovieMeta.vue'
+import MovieTrailer from '@/components/MovieTrailer.vue'
 
 export default Vue.extend({
   name: 'movie',

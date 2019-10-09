@@ -21,10 +21,10 @@ import Vue from 'vue'
 export default Vue.extend({
   computed: {
     isLoading: {
-      get () {
+      get (): boolean {
         return this.value
       },
-      set (value) {
+      set (value: boolean) {
         this.$emit('input', value)
       }
     }

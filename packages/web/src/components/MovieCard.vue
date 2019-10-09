@@ -20,10 +20,10 @@ import Vue from 'vue'
 
 export default Vue.extend({
   computed: {
-    date () {
+    date (): Date {
       return new Date(this.releaseDate)
     },
-    year () {
+    year (): number {
       return this.date.getFullYear()
     }
   },
@@ -37,7 +37,7 @@ export default Vue.extend({
       this.$router.push({
         name: 'movie',
         params: {
-          id: this.id
+          id: String(this.id)
         }
       })
     }
@@ -45,7 +45,7 @@ export default Vue.extend({
 
   props: {
     id: {
-      type: Number,
+      type: [Number, String],
       required: true
     },
     title: {
