@@ -1,6 +1,6 @@
 <template>
   <v-app id="app">
-    <app-navigation-drawer :items="genresMock"/>
+    <app-navigation-drawer :items="genres"/>
 
     <v-content>
       <v-container
@@ -16,14 +16,21 @@
 <script>
 import AppNavigationDrawer from '@/components/AppNavigationDrawer'
 
+import apiClient from '@/services/apiClient'
+
 export default {
+  mounted () {
+    return this.fetchGenres()
+  },
   data: () => ({
-    genresMock: [
-      { title: 'Dashboard', icon: 'mdi-view-dashboard' },
-      { title: 'Photos', icon: 'mdi-image' },
-      { title: 'About', icon: 'mdi-help-box' }
-    ]
+    genres: []
   }),
+  methods: {
+    async fetchGenres () {
+      this.genres = await apiClient.get('genre')
+        .then(res => res.data)
+    }
+  },
   components: {
     AppNavigationDrawer
   }
