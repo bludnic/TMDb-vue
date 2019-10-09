@@ -1,5 +1,5 @@
 <template>
-  <v-container grid-list-md>
+  <v-container grid-list-xl>
     <h1>{{ movie.title }}</h1>
 
     <template v-if="isFulfilled">

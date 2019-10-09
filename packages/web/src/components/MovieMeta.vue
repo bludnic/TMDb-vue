@@ -123,7 +123,7 @@ export default Vue.extend({
       border-bottom: 3px dotted red
 
       > td
-        padding: 4px 8px
+        padding: 4px 0px
 
     &__attr
       width: 10%
