@@ -1,7 +1,5 @@
 <template>
   <v-container grid-list-md>
-    <h2>Popular</h2>
-
     <v-layout row wrap>
       <v-flex md2 v-for="movie in movies">
         <movie-card
