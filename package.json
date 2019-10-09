@@ -18,5 +18,8 @@
   "dependencies": {},
   "workspaces": [
     "packages/*"
-  ]
+  ],
+  "engines": {
+    "node": "11.12.0"
+  }
 }
