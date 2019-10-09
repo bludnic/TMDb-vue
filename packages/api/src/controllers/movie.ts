@@ -19,6 +19,12 @@ const movie = {
     const res = await tmdbClient.getById(ctx.params.id)
 
     ctx.body = res
+  },
+
+  async getVideos (ctx: Context) {
+    const res = await tmdbClient.getVideos(ctx.params.id)
+
+    ctx.body = res
   }
 }
 

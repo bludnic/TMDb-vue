@@ -2,7 +2,7 @@ import axios from 'axios'
 
 import { KeyValue} from '../models'
 
-import { TMDbGenre, TMDbMoviesResponse, TMDbMovieFull } from '../models'
+import { TMDbGenre, TMDbMoviesResponse, TMDbMovieFull, TMDbVideo } from '../models'
 
 const client = axios.create({
   baseURL: process.env.TMDbURL
@@ -45,5 +45,10 @@ export default {
   getById (id: number): Promise<TMDbMovieFull> {
     return client.get(`${process.env.TMDbURL}/movie/${id}`)
       .then(res => res.data)
+  },
+
+  getVideos (id: number): Promise<TMDbVideo[]> {
+    return client.get(`${process.env.TMDbURL}/movie/${id}/videos`)
+      .then(res => res.data.results)
   }
 }

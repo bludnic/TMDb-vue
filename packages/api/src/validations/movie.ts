@@ -16,5 +16,10 @@ export default {
     params: {
       id: joi.number()
     }
+  },
+  getVideos: {
+    params: {
+      id: joi.number()
+    }
   }
 }

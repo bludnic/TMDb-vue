@@ -26,6 +26,11 @@
             :runtime="movie.runtime"
             :adult="movie.adult"
           />
+
+          <movie-trailer
+            v-if="trailer"
+            :id="trailer.key"
+          />
         </v-flex>
       </v-layout>
 
@@ -45,14 +50,24 @@ import Vue from 'vue'
 
 import apiClient from '@/services/apiClient'
 import MovieMeta from '@/components/MovieMeta'
+import MovieTrailer from '@/components/MovieTrailer'
 
 export default Vue.extend({
   name: 'movie',
   mounted () {
-    return this.fetchMovie()
+    this.fetchMovie()
+    this.fetchVideos()
+  },
+  computed: {
+    trailer () {
+      return this.videos.find(
+        video => video.type === 'Trailer' && video.site === 'YouTube'
+      )
+    }
   },
   data: () => ({
     movie: {},
+    videos: [],
     TMDbURL: process.env.VUE_APP_TMDB_CDN,
     isFulfilled: false
   }),
@@ -61,14 +76,19 @@ export default Vue.extend({
       this.movie = await apiClient.get(`movie/${this.id}`)
         .then(res => res.data)
       this.isFulfilled = true
+    },
+    async fetchVideos () {
+      this.videos = await apiClient.get(`movie/${this.id}/videos`)
+        .then(res => res.data)
     }
   },
   components: {
-    MovieMeta
+    MovieMeta,
+    MovieTrailer
   },
   props: {
     id: {
-      type: Number,
+      type: [Number, String],
       required: true
     }
   }

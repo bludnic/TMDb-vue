@@ -59,6 +59,21 @@ export interface TMDbSpokenLanguage {
   name: string
 }
 
+export type TMDbVideoProvider = 'YouTube' | 'Vimeo'
+export type TMDbVideoSize = 360 | 480 | 720 | 1080
+export type TMDbVideoType = 'Trailer' | 'Teaser' | 'Clip' | 'Featurette' | 'Behind the Scenes' | 'Bloopers'
+
+export interface TMDbVideo {
+  id: string
+  iso_639_1: string
+  iso_3166_1: string
+  key: string
+  name: string
+  site: TMDbVideoProvider
+  size: TMDbVideoSize
+  type: TMDbVideoType
+}
+
 export interface KeyValue {
   [key: string]: any
 }
