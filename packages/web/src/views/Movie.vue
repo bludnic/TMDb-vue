@@ -1,5 +1,6 @@
 <template>
   <v-container grid-list-md>
+    <h1>{{ movie.title }}</h1>
 
     <v-layout row wrap>
       <v-flex md4>
@@ -11,7 +12,19 @@
       </v-flex>
 
       <v-flex md8>
-        <h1>{{ movie.title }}</h1>
+        <movie-meta
+          :title="movie.title"
+          :overview="movie.overview"
+          :releaseDate="movie.release_date"
+          :productionCountries="movie.production_countries"
+          :tagline="movie.tagline"
+          :budget="movie.budget"
+          :revenue="movie.revenue"
+          :backdropPath="movie.backdrop_path"
+          :posterPath="movie.poster_path"
+          :runtime="movie.runtime"
+          :adult="movie.adult"
+        />
 
         <v-list class="transparent">
           <v-list-tile>year: {{ movie.release_date }}</v-list-tile>
@@ -28,7 +41,7 @@
     <v-layout>
 
       <v-flex xs12>
-        <h2>{{ movie.overview }}</h2>
+        <div class="subheading">{{ movie.overview }}</div>
       </v-flex>
 
     </v-layout>
@@ -40,6 +53,7 @@
 import Vue from 'vue'
 
 import apiClient from '@/services/apiClient'
+import MovieMeta from '@/components/MovieMeta'
 
 export default Vue.extend({
   name: 'movie',
@@ -55,6 +69,9 @@ export default Vue.extend({
       this.movie = await apiClient.get(`movie/${this.id}`)
         .then(res => res.data)
     }
+  },
+  components: {
+    MovieMeta
   },
   props: {
     id: {
