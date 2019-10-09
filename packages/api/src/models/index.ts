@@ -15,6 +15,21 @@ export interface TMDbMovie {
   release_date: string
 }
 
+export interface TMDbMovieFull extends TMDbMovie {
+  belongs_to_collection: boolean
+  budget: number
+  genres: TMDbGenre[]
+  homepage: string
+  imdb_id: number
+  production_companies: TMDbProductionCompany[]
+  production_countries: TMDbProductionCountry[]
+  revenue: number
+  runtime: number
+  spoken_languages: TMDbSpokenLanguage[]
+  status: string
+  tagline: string
+}
+
 export interface TMDbMoviesResponse {
   page: number
   total_results: number
@@ -24,6 +39,23 @@ export interface TMDbMoviesResponse {
 
 export interface TMDbGenre {
   id: number
+  name: string
+}
+
+export interface TMDbProductionCompany {
+  id: number
+  logo_path: string
+  name: string
+  origin_country: string
+}
+
+export interface TMDbProductionCountry {
+  iso_3166_1: string
+  name: string
+}
+
+export interface TMDbSpokenLanguage {
+  iso_639_1: string
   name: string
 }
 
