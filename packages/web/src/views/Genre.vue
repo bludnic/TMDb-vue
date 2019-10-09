@@ -33,10 +33,11 @@ export default Vue.extend({
   async created () {
     return this.fetchMovies()
   },
-  async beforeRouteUpdate (to, from, next) {
-    this.resetData()
-    next()
-    this.fetchMovies()
+  watch: {
+    id () {
+      this.resetData()
+      this.fetchMovies()
+    }
   },
   data: () => ({
     movies: [],
@@ -72,7 +73,7 @@ export default Vue.extend({
   },
   props: {
     id: {
-      type: Number,
+      type: [Number, String],
       required: true
     }
   }
