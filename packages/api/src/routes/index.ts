@@ -12,6 +12,8 @@ router.get('/test', ctx => {
 })
 
 router.get('/movie', validate(validations.getAll), movie.getAll)
+router.get('/movie/popular', validate(validations.getPopular), movie.getPopular)
+router.get('/movie/:id', validate(validations.getById), movie.getById)
 router.get('/genre', genre.getAll)
 
 export default router

@@ -6,5 +6,15 @@ export default {
       page: joi.number(),
       genre: joi.string().regex(/^([0-9]+,)*[0-9]+$/)
     }
+  },
+  getPopular: {
+    query: {
+      page: joi.number()
+    }
+  },
+  getById: {
+    params: {
+      id: joi.number()
+    }
   }
 }

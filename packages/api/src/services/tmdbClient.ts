@@ -2,7 +2,7 @@ import axios from 'axios'
 
 import { KeyValue} from '../models'
 
-import { TMDbGenre, TMDbMoviesResponse } from '../models'
+import { TMDbGenre, TMDbMoviesResponse, TMDbMovieFull } from '../models'
 
 const client = axios.create({
   baseURL: process.env.TMDbURL
@@ -30,5 +30,20 @@ export default {
         api_key: process.env.TMDbKey
       }
     }).then(res => res.data.genres)
+  },
+
+  getPopular (page?: number): Promise<TMDbMoviesResponse> {
+    const params: KeyValue = {
+      api_key: process.env.TMDbKey
+    }
+    page ? params.page = page : null
+
+    return client.get(`${process.env.TMDbURL}/movie/popular`, { params })
+      .then(res => res.data)
+  },
+
+  getById (id: number): Promise<TMDbMovieFull> {
+    return client.get(`${process.env.TMDbURL}/movie/${id}`)
+      .then(res => res.data)
   }
 }
