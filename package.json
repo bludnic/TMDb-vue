@@ -7,7 +7,9 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "dev": "lerna run dev"
+    "dev": "lerna run dev",
+    "build": "lerna run build",
+    "start": "lerna run start"
   },
   "devDependencies": {
     "lerna": "^3.16.4"
