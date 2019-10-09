@@ -1,7 +1,5 @@
 <template>
   <v-container grid-list-md>
-    <h2>Popular</h2>
-
     <v-layout row wrap>
       <v-flex md2 v-for="movie in movies">
         <movie-card
@@ -40,9 +38,14 @@ import apiClient from '@/services/apiClient'
 import MovieCard from '@/components/MovieCard'
 
 export default Vue.extend({
-  name: 'home',
+  name: 'genre',
   async created () {
     return this.fetchMovies()
+  },
+  async beforeRouteUpdate (to, from, next) {
+    this.resetData()
+    next()
+    this.fetchMovies()
   },
   data: () => ({
     movies: [],
@@ -54,20 +57,32 @@ export default Vue.extend({
       this.page++
 
       const params = {
-        page: this.page
+        page: this.page,
+        genre: this.id
       }
 
       this.isLoading = true
-      const movies = await apiClient.get('movie/popular', { params })
+      const movies = await apiClient.get('movie', { params })
         .then(res => res.data.results)
         .catch(err => console.error(err))
         .finally(() => this.isLoading = false)
 
       this.movies = this.movies.concat(movies)
+    },
+    resetData () {
+      this.movies = []
+      this.page = 0
+      this.isLoading = false
     }
   },
   components: {
     MovieCard
+  },
+  props: {
+    id: {
+      type: String,
+      required: true
+    }
   }
 })
 </script>
