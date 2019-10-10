@@ -1,7 +1,6 @@
 import axios from 'axios'
 
-import { KeyValue} from '../models'
-
+import { KeyValue } from '../models'
 import { TMDbGenre, TMDbMoviesResponse, TMDbMovieFull, TMDbVideo } from '../models'
 
 const client = axios.create({
