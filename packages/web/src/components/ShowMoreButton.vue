@@ -19,6 +19,7 @@
 import Vue from 'vue'
 
 export default Vue.extend({
+  name: 'show-more-button',
   computed: {
     isLoading: {
       get (): boolean {

@@ -19,6 +19,7 @@
 import Vue from 'vue'
 
 export default Vue.extend({
+  name: 'movie-card',
   computed: {
     date (): Date {
       return new Date(this.releaseDate)

@@ -31,6 +31,7 @@ import Vue from 'vue'
 import AppLogo from './AppLogo.vue'
 
 export default Vue.extend({
+  name: 'app-navigation-drawer',
   data: () => ({
   }),
   methods: {

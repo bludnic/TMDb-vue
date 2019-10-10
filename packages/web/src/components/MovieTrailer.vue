@@ -15,6 +15,7 @@
 import Vue from 'vue'
 
 export default Vue.extend({
+  name: 'movie-trailer',
   props: {
     id: {
       type: String,
