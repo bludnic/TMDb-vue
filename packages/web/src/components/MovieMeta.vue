@@ -46,7 +46,7 @@ import Vue, { PropOptions } from 'vue'
 
 import currency from '@/filters/currency'
 import time from '@/filters/time'
-import { TMDbProductionCountry } from '../../../api/src/models'
+import { TMDbProductionCountry } from '@server/models'
 
 export default Vue.extend({
   name: 'movie-meta',
